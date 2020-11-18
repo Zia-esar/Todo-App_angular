@@ -10,7 +10,7 @@ export class AppComponent {
   title = 'todo-app';
 
   todoValue: string;
-  list: Todo[];
+  list: Todo[] = [];
 
   ngOnInit(){
     this.list = [];
