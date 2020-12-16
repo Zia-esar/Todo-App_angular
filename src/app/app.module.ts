@@ -3,10 +3,12 @@ import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
+import { LogInModalComponent } from './log-in-modal/log-in-modal.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LogInModalComponent
   ],
   imports: [
     BrowserModule,

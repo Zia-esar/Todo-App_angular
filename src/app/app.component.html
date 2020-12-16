@@ -18,7 +18,7 @@
   (key.enter)="addItem()"
   />
   <button class="add-btn" (click)= "addItem()">Add Todo</button>
-  <button class="add-btn" (click)="open(content)">LogIn</button>
+  <button class="add-btn" (click)="open()">LogIn</button>
   <div class="list">
     <ul>
       <li *ngFor="let item of list">
@@ -29,28 +29,4 @@
     </ul>
   </div>
 </div>
-
-
-<ng-template #content let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-title">LogIn Form</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <form>
-      <div class="form-group">
-        <div class="input-group">
-          <input id="username" class="input-text" placeholder="Username" name="username" [(ngModel)]="username">
-          <input id="password" class="input-text" placeholder="Password" name="password" [(ngModel)]="userpwd">
-        </div>
-      </div>
-    </form>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="add-btn" (click)="modal.close(login())">logIn</button>
-    <button type="button" class="add-btn" (click)="modal.close(addUser())">Add User</button>
-  </div>
-</ng-template>
-
+<app-log-in-modal (myModal)="open()"></app-log-in-modal>
