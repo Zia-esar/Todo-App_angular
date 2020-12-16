@@ -5,8 +5,8 @@
 }
 .input-text{
     display: inline;
-    margin: 0;
-    border: none;
+    margin-right: 5px;
+    border: 1px solid;
     border-radius: 0.4rem;
     padding: 10px;
     border-color: blueviolet;
@@ -18,7 +18,7 @@ ul{
 }
 .container{
     color: #fff;
-    max-width: 500px;
+    max-width: 550px;
     margin: auto;
 }
 
