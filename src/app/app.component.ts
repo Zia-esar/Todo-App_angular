@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { VirtualTimeScheduler } from 'rxjs';
+import { LogInModalComponent } from './log-in-modal/log-in-modal.component';
 import { Todo } from './todo';
 
 
@@ -14,6 +15,8 @@ export class AppComponent {
 
   todoValue: string;
   list: Todo[] = [];
+
+  @ViewChild(LogInModalComponent) myModal: LogInModalComponent;
 
   constructor(){}
 
@@ -36,6 +39,10 @@ export class AppComponent {
 
   deleteItem(id: number){
     this.list = this.list.filter(item => item.id !== id);
+  }
+
+  openModal(){
+    this.myModal.open();
   }
 }
 

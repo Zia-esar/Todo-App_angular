@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { Users } from '../users';
 
@@ -12,7 +12,7 @@ export class LogInModalComponent implements OnInit {
   username;
   userpwd;
 
-  // @Output() myModal = new EventEmitter();
+  @ViewChild('content') loginModal;
 
   userList: Users[] = [
     {username: 'ali', password: 'asdf'},
@@ -25,9 +25,8 @@ export class LogInModalComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  open(content) {
+  open(content=this.loginModal) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-title'});
-    // this.myModal.emit(this.modalService.open(content, {ariaLabelledBy: 'modal-title'}));
   }
 
   addUser(){
@@ -38,7 +37,7 @@ export class LogInModalComponent implements OnInit {
       }
       this.userList.push(newUser);
     }else {
-      console.log("Fill all fields!!")
+      console.log("All fields should be filled!!")
     }
     this.username = "";
     this.userpwd = "";
