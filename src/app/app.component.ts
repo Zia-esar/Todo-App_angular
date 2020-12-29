@@ -1,9 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-
-import { VirtualTimeScheduler } from 'rxjs';
-import { LogInModalComponent } from './log-in-modal/log-in-modal.component';
-import { Todo } from './todo';
-
+import { Users } from './users'
 
 @Component({
   selector: 'app-root',
@@ -11,38 +7,56 @@ import { Todo } from './todo';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'todo-app';
 
-  todoValue: string;
-  list: Todo[] = [];
+  username;
+  userpwd;
 
-  @ViewChild(LogInModalComponent) myModal: LogInModalComponent;
+  userList: Users[] = [
+    {username: 'ali', password: 'asdf'},
+    {username: 'zia', password: '1234'},
+    {username: 'hammad', password: 'zxcv'},
+  ];
 
-  constructor(){}
+  constructor() { }
 
-  ngOnInit(){
-    this.list = [];
-    this.todoValue = "";
+  ngOnInit(): void {
   }
 
-  addItem(){
-    if(this.todoValue !== ""){
-      const newItem: Todo = {
-        id: Date.now(),
-        value: this.todoValue,
-        isDone: false
+  addUser(){
+    if(this.username !== "" && this.userpwd !== ""){
+      const newUser: Users = {
+        username: this.username,
+        password: this.userpwd
       }
-      this.list.push(newItem);
+      this.userList.push(newUser);
+    }else {
+      console.log("All fields should be filled!!")
     }
-    this.todoValue = "";
+    this.username = "";
+    this.userpwd = "";
+
+    for(let item of this.userList){
+      console.log(item);
+    }
   }
 
-  deleteItem(id: number){
-    this.list = this.list.filter(item => item.id !== id);
+  login(){
+    if(this.username !== "" && this.userpwd !== ""){
+     var result = this.userList.filter(item => item.username == this.username && item.password == this.userpwd)
+     console.log(result)
+      if(result.length != 0){
+        console.log("welcome")
+      }else {
+        console.log("You are not registered!!")
+      }
+    }else {
+      console.log("All fields should be filled!!")
+    }
+
+    this.username = "";
+    this.userpwd = "";
+
   }
 
-  openModal(){
-    this.myModal.open();
-  }
 }
 

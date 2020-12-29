@@ -1,19 +1,26 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { LogInModalComponent } from './log-in-modal/log-in-modal.component';
+import { TodoComponent } from './todo/todo.component';
+
+const routes: Routes = [
+  {path: 'todo', component: TodoComponent}
+]
 
 @NgModule({
   declarations: [
     AppComponent,
-    LogInModalComponent
+    TodoComponent,
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]
