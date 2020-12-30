@@ -5,8 +5,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { TodoComponent } from './todo/todo.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
+  {path: '', component: LoginComponent},
   {path: 'todo', component: TodoComponent}
 ]
 
@@ -14,7 +16,7 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     TodoComponent,
-
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

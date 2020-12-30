@@ -10,6 +10,7 @@ export class TodoComponent implements OnInit {
 
   todoValue: string;
   list: Todo[] = [];
+  userTitle = "Todo App";
 
   constructor() { }
 
