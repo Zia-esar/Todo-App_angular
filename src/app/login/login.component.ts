@@ -49,8 +49,8 @@ export class LoginComponent implements OnInit {
         if(result.length != 0){
         console.log("welcome");
         localStorage.setItem('user', JSON.stringify(result));
-        // this.isResult = localStorage.getItem('user');
-        // console.log(" Hello " + this.isResult);
+        this.isResult = localStorage.getItem('user');
+        console.log(" Hello " + this.isResult);
         this._router.navigateByUrl('/todo');
         }else {
         console.log("You are not registered!!")
