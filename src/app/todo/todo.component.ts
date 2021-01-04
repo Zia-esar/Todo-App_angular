@@ -10,7 +10,8 @@ export class TodoComponent implements OnInit {
 
   todoValue: string;
   list: Todo[] = [];
-  userTitle = "Todo App";
+  userTitle = JSON.parse(localStorage.getItem('user'));
+  user = this.userTitle[0].username;
 
   constructor() { }
 
@@ -33,6 +34,10 @@ export class TodoComponent implements OnInit {
 
   deleteItem(id: number){
     this.list = this.list.filter(item => item.id !== id);
+  }
+
+  logOut(){
+    localStorage.clear();
   }
 
 }

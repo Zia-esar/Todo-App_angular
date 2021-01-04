@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Users } from '../users';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,11 +12,6 @@ export class LoginComponent implements OnInit {
   username;
   userpwd;
   isResult;
-  
-
-  alertMsg(){
-    console.log('you are not registerd!!')
-  }
 
   userList: Users[] = [
     {username: 'ali', password: 'asdf'},
@@ -23,7 +19,7 @@ export class LoginComponent implements OnInit {
     {username: 'hammad', password: 'zxcv'},
   ];
 
-  constructor() { }
+  constructor(private _router: Router) { }
 
   ngOnInit(): void {
   }
@@ -48,14 +44,17 @@ export class LoginComponent implements OnInit {
 
   login(){
     if(this.username !== "" && this.userpwd !== ""){
-     let result = this.userList.filter(item => item.username == this.username && item.password == this.userpwd);
-     this.isResult = result;
-     console.log(result)
-      if(result.length != 0){
-        console.log("welcome")
-      }else {
+        var result = this.userList.filter(item => item.username == this.username && item.password == this.userpwd);
+        console.log(result)
+        if(result.length != 0){
+        console.log("welcome");
+        localStorage.setItem('user', JSON.stringify(result));
+        // this.isResult = localStorage.getItem('user');
+        // console.log(" Hello " + this.isResult);
+        this._router.navigateByUrl('/todo');
+        }else {
         console.log("You are not registered!!")
-      }
+        }
     }else {
       console.log("All fields should be filled!!")
     }
@@ -63,3 +62,5 @@ export class LoginComponent implements OnInit {
     this.userpwd = "";
   }
 }
+
+

@@ -6,10 +6,16 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { TodoComponent } from './todo/todo.component';
 import { LoginComponent } from './login/login.component';
+import { TodoGuardGuard } from './todo-guard.guard';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
-  {path: 'todo', component: TodoComponent}
+  // {path: '', redirectTo: 'login', pathMatch: 'full'},
+  {
+    path: 'todo',
+    component: TodoComponent,
+    canActivate: [ TodoGuardGuard]
+  }
 ]
 
 @NgModule({
