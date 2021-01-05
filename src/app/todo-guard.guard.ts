@@ -9,14 +9,17 @@ export class TodoGuardGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
-      let result = localStorage.getItem('user');
-      if(result !== ''){
-        this.isResult = true;
-      }else {
-        this.isResult = false;
-      }
+      // debugger
+    //   let result = localStorage.getItem('user');
+    //   if(result !== null){
+    //     this.isResult = true;
+    //   }else {
+    //     this.isResult = false;
 
-    return this.isResult;
+    //   }
+
+    //  return this.isResult;
+   return true;
   }
 
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Todo } from '../todo';
 
 @Component({
@@ -13,7 +14,7 @@ export class TodoComponent implements OnInit {
   userTitle = JSON.parse(localStorage.getItem('user'));
   user = this.userTitle[0].username;
 
-  constructor() { }
+  constructor(private _router: Router) { }
 
   ngOnInit(): void {
     this.list = [];
@@ -38,6 +39,7 @@ export class TodoComponent implements OnInit {
 
   logOut(){
     localStorage.clear();
+    this._router.navigateByUrl('/');
   }
 
 }

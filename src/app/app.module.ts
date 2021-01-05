@@ -7,14 +7,15 @@ import { AppComponent } from './app.component';
 import { TodoComponent } from './todo/todo.component';
 import { LoginComponent } from './login/login.component';
 import { TodoGuardGuard } from './todo-guard.guard';
+import { AuthGuardService } from './auth-guard.service';
 
 const routes: Routes = [
-  {path: '', component: LoginComponent},
-  // {path: '', redirectTo: 'login', pathMatch: 'full'},
+  {path: 'login', component: LoginComponent},
+  {path: '', redirectTo: '/login', pathMatch: 'full'},
   {
     path: 'todo',
     component: TodoComponent,
-    canActivate: [ TodoGuardGuard]
+    canActivate: [ AuthGuardService ]
   }
 ]
 
@@ -30,7 +31,7 @@ const routes: Routes = [
     NgbModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

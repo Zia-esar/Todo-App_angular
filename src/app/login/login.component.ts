@@ -11,7 +11,6 @@ export class LoginComponent implements OnInit {
 
   username;
   userpwd;
-  isResult;
 
   userList: Users[] = [
     {username: 'ali', password: 'asdf'},
@@ -22,6 +21,13 @@ export class LoginComponent implements OnInit {
   constructor(private _router: Router) { }
 
   ngOnInit(): void {
+    let val = localStorage.getItem('user');
+    console.log("hello from login ng" + val);
+    if(val !== null){
+      this._router.navigateByUrl('/todo')
+    }else {
+      this._router.navigateByUrl('');
+    }
   }
 
   addUser(){
@@ -49,8 +55,8 @@ export class LoginComponent implements OnInit {
         if(result.length != 0){
         console.log("welcome");
         localStorage.setItem('user', JSON.stringify(result));
-        this.isResult = localStorage.getItem('user');
-        console.log(" Hello " + this.isResult);
+        let isResult = localStorage.getItem('user');
+        console.log(" Hello " + isResult);
         this._router.navigateByUrl('/todo');
         }else {
         console.log("You are not registered!!")
